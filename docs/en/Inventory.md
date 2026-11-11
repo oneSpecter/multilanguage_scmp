@@ -1,404 +1,436 @@
 # Inventory
 
-The inventory functionality collects metadata of installed assets across all providers present on the Movincloud.
+The inventory feature collects the metadata of the assets installed across all the providers available on Movincloud.
 
-The assets currently present are:
+The assets currently supported are:
 
 - Virtual Machine
 - Data Stores
 - Networks
 - Clusters
+- Kubernetes
 - Edge
 - Security
 - Others
 
-Heterogeneous metadata, coming from different sources, is then normalized by the Movincloud to allow for standard visualization.
+The heterogeneous metadata coming from the different sources is then normalised by Movincloud to allow a standard presentation.
 
-Inventory is accessible from the “Inventory” menu item.
+The inventory is reached from the “Inventory” menu item.
 
-![Accesso a Inventory](assets/images/extract/media/image104.png)
+![Opening Inventory](assets/images/extract/media/image104.png)
 
-### Inventory Dashboard
+### Inventory resources
 
-The Dashboard page provides a global and aggregated view of all resources, while the menus above the breadcrumb path allow filtering by resource type. The functionalities available on the various pages are identical.
+The “Resources” page gives a global, aggregated view of every resource, while the Inventory menu items make it possible to filter by resource type (Virtual Machines, Networks, Clusters, Kubernetes, Data Stores, Security, Edge Devices, Other). The features available in the various pages are identical.
 
-![dashboard di inventario](assets/images/extract/media/image105.png)
+![inventory dashboard](assets/images/extract/media/image105.png)
 
-Within the “Resources” tab page, there are filters; in the first filter at the top, it is possible to search for resources by name, resource group, Provider, etc. It is also possible to filter resources by “Provider” and “Subsystem”.
+At the top of the page, next to the title, you find the total number of resources found and three commands:
 
-The last filter allows searching by tag. Click on it and select a tag, then by clicking the button depicting a magnifying glass, the page will refresh and display the list of filtered resources.
+- “Distribution”, which shows or hides the summary charts;
+- “Export”, which exports the current list as CSV, JSON or PDF;
+- “Force Sync”, which requests an immediate synchronisation of the resources from the subsystems; a confirmation message appears when it is done.
 
-![Ricerca generica, per tag, per Provider e Subsystem](assets/images/extract/media/image106.png)
+At the top of the page there is a free-text search field for name, resource group, provider, and so on: pressing “Enter” or the “Search” button refreshes the list. Next to it, the “Filters” button shows the additional filters and reports in a badge how many are active: “Search by tags”, “Search by type”, “Search by provider” and “Search by Subsystem”; choosing a type also brings up its subtypes.
 
-It is also possible to click on the graphs to automatically apply the relevant filters.
+The applied filters are listed as chips at the top of the panel and can be removed one by one or all at once with the crossed-out filter icon button (“Clear”).
 
-#### Resource detail view
+![Generic search, by tag, by Provider and Subsystem](assets/images/extract/media/image106.png)
 
-To view the details of a resource, you can click as shown in the figure:
+When the charts are visible they show the distribution of the resources by type, by provider, by region and, where the information is available, of the confidential resources. You can also click the charts of types, providers and confidential resources to apply the corresponding filter.
 
-![Accesso alla risorsa in modalità lettura](assets/images/extract/media/image107.png)
+The results table reports provider, name, system name, type and subtype, size, resource group, creation date and state, shown as a coloured tag (green for running resources, red for stopped or failed ones, orange for intermediate states). Three further columns indicate whether the resource is confidential, whether it is a cloud or an on-premise resource and whether it is present in the Movincloud catalogue.
 
-The detail of an inventory asset shows the main characteristics at the top, such as monthly cost, machine size, and an external link to the resource pointing to the reference provider.
+#### Viewing the resource detail
 
-Below is the detailed view of a VM:
+To view the detail of a resource you can either click its table row or use the “Show” option of the “three dots” context menu, as shown below:
 
-![Dettaglio risorsa](assets/images/extract/media/image108.png)
+![Opening a resource in read mode](assets/images/extract/media/image107.png)
 
-And at the bottom, the asset's relationships with other Movincloud elements, as shown in the figure:
+The detail of an asset shows at the top the provider, the name, the state, the subsystem, the last update date and, where available, the “Open in portal” link to the resource on the provider; on the right are the main properties, which depend on the type.
 
-![Grafico delle relazioni](assets/images/extract/media/image109.png)
+Below is the detail view of a VM:
 
-The relationship graph allows navigating between resources by directly clicking on the circle of the linked resource, in order to land on its details.
+![Resource detail](assets/images/extract/media/image108.png)
 
-Furthermore, it is possible to edit some attributes, such as tags, as shown in the figure:
+The rest of the page is organised in collapsible panels: “Properties”, “Tags & Notes” and, if the resource has relations, “Relations” and “Relations Chart”.
 
-![Selezione del tag](assets/images/extract/media/image110.png)
+And at the bottom the relations of the asset with other Movincloud elements, as shown in the figure:
 
-For the “Provider Tags…” field, it is not possible to select a tag, as tags in this section are retrieved directly from the subsystem.
+![Relations chart](assets/images/extract/media/image109.png)
 
-The “Add Movincloud Tag…” field allows selecting from a list or manually entering one. Inside the tag, there is an “X” symbol to delete it.
+The relations chart allows you to navigate between resources by clicking directly on the node of the related resource, so as to land on its detail page. Besides the infrastructure resources, the chart also represents the elements of the Kubernetes clusters (namespaces, deployments, StatefulSets, services, secrets, config maps, volumes, ingresses, network policies, pods and nodes).
 
-It is possible to add multiple tags to the resource.
+Some attributes can also be edited, for example the tags, as shown in the figure:
 
-Subsequently, in the bottom right of the “Tags & Note” section, click on the “Save” button to save the change, and a banner will appear at the bottom indicating the tag has been saved.
+![Selecting a tag](assets/images/extract/media/image110.png)
 
-Scroll the page to the bottom, and click on the “Close” button located on the right to return to the “Dashboard” tab page.
+In the “Provider tags...” field no tag can be selected, because the tags in this section are retrieved directly from the subsystem
+
+The “Add CMP tag...” field allows you to pick a tag from a list or to type one manually. Each tag carries an “X” symbol to delete it.
+
+Several tags can be added to the resource, together with a free-text note.
+
+Then, at the bottom right of the “Tags & Notes” section, click the “Save” button to save the change; a banner confirms that the tag has been saved.
+
+Scroll to the bottom of the page and click the “Close” button on the right to go back to the resource list; alternatively you can use the back arrow next to the resource title.
 
 #### Actions on inventory machines
 
-For inventory machines from supported providers, a new button available in the table context menu called “Manage” can be used to perform basic operations on the machines.
+For the resources of the supported providers, the “Manage” entry available in the table context menu makes it possible to perform basic operations. The option is available for virtual machines, for virtual networks and for Edge devices.
 
-![Accesso alla funzionalità di "management"](assets/images/extract/media/image111.png)
+![Opening the "management" feature](assets/images/extract/media/image111.png)
 
-From this resource detail page, the following operations can be performed using the menu at the top of the page; the operations available on the machines may vary depending on the provider:
+From this resource detail page the following operations can be performed using the menu at the top of the page; the available operations may vary depending on the provider:
 
 Azure Stack HCI
 
-- Start machine
-- Stop machine
-- Resize machine
-- Add storage disks
-- Add network interface
-- Delete resource
-- Remove disk from resource
-- Remove network interface
+- Starting the machine
+- Stopping the machine
+- Resizing the machine
+- Disk management: adding a new or existing disk, resizing, detaching and removing (the disk holding the operating system can neither be detached nor removed)
+- Network management: adding a network interface, editing the interface (network, subnet, IP address, primary and secondary DNS) and removing it
+- Deleting the resource
+- Deleting a virtual network: the operation cannot be undone and also removes the attached resources (subnets, network interfaces, ...)
 
 Red Hat Edge
 
-- Update an EDGE device image
+- Updating the image of an EDGE device
 
-Operations are indicated in white when they can be executed and in gray when they are not supported or unavailable for the resource.
+Where the environment provides it, the “Manage EDR” operation is also available, which enables EDR on the virtual machine and lets you follow its progress through to completion.
 
-![Operazioni sulle macchine di inventario](assets/images/extract/media/image112.png)
+The operations are shown in white when they can be run and in grey when they are not supported or not available for the resource.
 
-#### “Cluster Explorer” functionality
+![Operations on inventory machines](assets/images/extract/media/image112.png)
 
-Cluster Explorer is a powerful feature that allows users to view namespaces within a cluster in detail. This function provides a comprehensive overview of data and resource organization within the cluster, facilitating navigation and management of complex environments.
+#### Virtual machine console
+
+For the virtual machines of the providers that support it, the table menu offers the “Console” entry, which opens the graphical console of the machine.
+
+In the console page the commands “Ctrl+Alt+Del”, “Fit to window”, “Actual size”, “Full screen”, “Reconnect” and “Disconnect” are available. The session closes when you leave the page or after two hours, in which case it is enough to reconnect.
+
+In some environments the “Console” entry offers instead the two modes “noVNC” and “Xterm.js”, which open the console in a new browser window.
+
+#### The “Cluster explorer” feature
+
+The Cluster Explorer is a powerful feature that allows users to inspect in detail the namespaces inside a cluster. It offers a complete overview of how data and resources are organised within the cluster, making it easier to navigate and manage complex environments.
 
 With Cluster Explorer, users can:
 
-- View the complete list of namespaces in a cluster: Get a quick overview of all available namespaces in the cluster.
-- Examine the details of each namespace: Access complete information about each namespace, including name, description, labels, and resource quotas.
-- Filter and search namespaces: Quickly find specific namespaces using advanced filtering and search criteria.
+- View the full list of the namespaces in a cluster: get a quick overview of all the namespaces available in the cluster.
+- Inspect the details of each namespace: access complete information about every namespace, including name, description, labels and resource quotas.
+- Filter and search the namespaces: quickly find specific namespaces using advanced filter and search criteria.
 
-To access the functionality, select the “Clusters” item from the horizontal menu of the Inventory module.
+To reach the feature, select the “Kubernetes” entry from the Inventory menu, which lists the clusters and the Kubernetes resources present in the configured subsystems. The “Clusters” entry lists instead the clusters of the other providers, for which namespace exploration is not available; the page is split into the “Clusters” and “Nodes” tabs.
 
-![Accesso alla funzionalità di cluster explorer](assets/images/extract/media/image113.png)
+![Opening the cluster explorer feature](assets/images/extract/media/image113.png)
 
-Inside the page, a list of clusters present within the subsystems configured in the system will be displayed. Clicking on one of them will open a modal with the general details of the cluster.
+The page shows the list of the clusters present in the subsystems configured in the system; clicking one of them opens a modal with the general details of the cluster.
 
-![Finestra di dettaglio del cluster](assets/images/extract/media/image114.png)
+![Cluster detail window](assets/images/extract/media/image114.png)
 
-We can notice that at the bottom right there is a “cluster explorer” button; pressing it will redirect us to the cluster Dashboard. This page can also be accessed using the “cluster explorer” button available in the “three dots” context menu present for each cluster in the list of results.
+At the bottom right of the modal there are the “More Details” and “Cluster Explorer” buttons: clicking the latter takes you to the cluster dashboard. The same page can also be reached through the “Cluster Explorer” entry available in the “three dots” context menu of every cluster in the result list.
 
-Within this page, we can view a graph representing the distribution of namespaces within the cluster; on the right, the legend of namespaces with the number of active pods is displayed.
+The page is organised in two tabs, “Overview” and “Explore namespaces”.
 
-![Dashboard del “cluster explorer”](assets/images/extract/media/image115.png)
+In the “Overview” tab you can see the number of namespaces, nodes, pods and running pods, together with a chart representing the distribution of the namespaces within the cluster; on the right the namespace legend is shown with the number of active pods.
 
-We can drill down into the details of namespaces using different components on the page:
+![The “cluster explorer” dashboard](assets/images/extract/media/image115.png)
 
-it is possible to click on the “Explore namespaces” button at the top right or click on the number of namespaces displayed at the top left to view the namespace exploration page without filters. If we want to directly view the details of a namespace present in the graph, it is possible to click on the corresponding slice, and the detail page will be automatically filtered for the selected namespace.
+You can drill down into the namespaces using several components of the page:
 
-![Pagina "Namespace explorer"](assets/images/extract/media/image116.png)
+you can click the “Explore namespaces” button at the top right, or click the number of namespaces shown at the top left, to open the namespace exploration page with no filter; if you want to go straight to the detail of a namespace shown in the chart, you can click its slice and the detail page will be filtered automatically by the selected namespace.
 
-The namespaces field at the top allows searching among available clusters by entering free text. If a match is found, you can select the namespace from the list to view its details.
+![The "Namespace explorer" page](assets/images/extract/media/image116.png)
 
-![Dettaglio dei namespace](assets/images/extract/media/image117.png)
+The namespaces field at the top allows you to search the available namespaces by free text. If a match is found, the namespace can be selected from the list to view its detail.
 
-Using the “Down Arrow” commands, it will be possible to navigate between available categories and sub-categories of elements. Finally, by selecting a result, its details will be displayed in the right section of the page, which will be automatically populated with the selected result from the left.
+![Namespace detail](assets/images/extract/media/image117.png)
 
-![Dettagli del contenuto del namespace](assets/images/extract/media/image118.png)
+The content of the namespace is split into the “Workload”, “Networking”, “Storage” and “Configuration” categories. Using the “down arrow” controls you can navigate the available categories and sub-categories of elements; selecting a result then shows its details in the right-hand section of the page, which is populated automatically with the item selected on the left.
 
-### “WHAT IF” Functionality
+The list of elements can be displayed as “Grid” or as “List”, filtered by name and, when the results are many, extended with the “Show more” button. Where applicable, the right-hand panel also reports the pods assigned to the resource, with access to the detail of the single pod and to the view of its configurations, whose values can be copied.
 
-This functionality allows performing simulations for asset migration from one provider to another, or within the same provider, in order to compare management and maintenance costs.
+![Details of the namespace content](assets/images/extract/media/image118.png)
 
-To run a simulation, click on the tab above the breadcrumb path that depicts a relationship connecting two entities, named ‘What If’.
+### The “WHAT IF” feature
 
-![Accesso a “What If”](assets/images/extract/media/image119.png)
+This feature makes it possible to run simulations for the migration of assets from one provider to another, or within the same provider, so as to compare management and maintenance costs.
 
-After doing so, you will find yourself on the “What If” tab page.
+To run a simulation, select the ‘What If’ entry from the Inventory menu.
 
-Above the list of simulations, on the right, we can notice two tabs that allow filtering the list by simulation type, specifically:
+![Opening “What If”](assets/images/extract/media/image119.png)
 
-upon opening the page, all “Change Provider” type simulations will be displayed, while clicking on the “Capacity” tab will allow viewing the list of “Change size” type simulations.
+At the top of the page there are two boxes, one for each type of simulation available: “Migrate to another provider”, to compare current costs with another cloud provider, and “Change resources capacity”, to assess the cost impact of a capacity change.
+
+Further down, the “Previous simulations” section lists the simulations already saved. The two tabs below the title filter the list by simulation type: when the page opens the “Provider Migration” tab is selected, while selecting the “Capacity” tab displays the list of the resource capacity change simulations.
+
+Every simulation reports name, creation date and status, shown with a traffic light: “Saving” when the simulation brings a saving, “Neutral” when costs are equivalent and “Worse” when costs increase. In addition there is the “Destination Providers” column in the “Provider Migration” tab and “Duration” in the “Capacity” one.
 
 ![](assets/images/extract/media/image120.png)
-![Pagina di “What If”](assets/images/extract/media/image121.png)
+![The “What If” page](assets/images/extract/media/image121.png)
 
-#### Scenario “What If”: Provider Migration
+#### “What If” scenario: Provider Migration
 
-To perform a “What If: Migrate Provider” simulation, click on the box on the left titled “Migrate to another provider”.
+To run a “What If: Migrate Provider” simulation, click the box titled “Migrate to another provider”
 
-![Accesso alla funzionalità "What If: Migrate Provider"](assets/images/extract/media/image122.png)
+![Opening the "What If: Migrate Provider" feature](assets/images/extract/media/image122.png)
 
-After doing so, the user will find themselves on the “Start” page of step 1 for simulating resource migration from one cloud provider to another.
+Having done so, the user lands on the “Start” page of step 1 for the simulation of the migration of resources from one cloud provider to another.
 
-On the left, in the “Select Resources to migrate” box, the user can search for resources using three types of filters, including:
+On the left, in the “Select Resources to migrate” box, the user can search the resources through three kinds of filter:
 
-- “Search” which allows searching for a resource by name;
-- “Search by Type” to obtain resources by selecting the resource type;
-- “Search by tags” which allows searching for resources using one or more tags.
+- “Search”, which allows you to look for a resource by name;
+- “Search by Type”, to obtain the resources by selecting the resource type;
+- “Search by tags”, which allows you to search the resources by one or more tags
 
-Within the resource table, only resources that have a relationship in the catalog will be displayed.
+The resources table only shows resources that have a relation in the catalogue
 
-Within the resource table, click on one of them and, using the “drag and drop” technique, drag it to the right, into the box titled “Currently selected”.
+In the resources table, click one of them and, using the “drag and drop” technique, drag it to the right, into the box titled “Currently selected”.
 
-A maximum of three resources can be included per simulation.
+A maximum of three resources per simulation can be added.
 
-Subsequently, in the bottom right, click on the “Next” button.
+Then, at the bottom right, click the “Next” button.
 
-![Scelta delle risorse in cui effettuare la migrazione del provider](assets/images/extract/media/image123.png)
+![Choosing the resources whose provider is to be migrated](assets/images/extract/media/image123.png)
 
-After doing so, the user will find themselves on the “Destination Providers” page of step 2, where it is possible to click on the checkbox corresponding to one or more providers. Based on the selected provider type, the value in the ‘Option selected’ field at the bottom left will be automatically populated with the names of the selected providers.
+Having done so, the user lands on the “Destination Providers” page of step 2, where one or more providers can be ticked with the checkbox; depending on the type of provider selected, the ‘Option selected” field at the bottom left is filled automatically with the names of the selected providers
 
-Subsequently, in the bottom right, click on the “Next” button, while to return to the “Start” page of step 1, click on the “Back” button.
+Then, at the bottom right, click the “Next” button, while to go back to the “Start” page of step 1 click the “Back” button.
 
-![Scelta del Cloud Provider in cui migrare le risorse](assets/images/extract/media/image124.png)
+![Choosing the Cloud Provider to migrate the resources to](assets/images/extract/media/image124.png)
 
-After clicking the “Next” button, the user will find themselves on the page of step 3 titled “Details”.
+After clicking the “Next” button, the user lands on the page of step 3, titled “Details”.
 
-On this page, cards will be displayed, one for each subsystem selected in step 2.
+This page shows a set of cards, one for each subsystem selected in step 2.
 
-In each card, on the left, there is a list of regions available for the cloud provider, and on the right, an empty section is displayed.
+In every card there is, on the left, a list of the regions available for the cloud provider, while on the right an empty section is shown.
 
-Selecting one or more regions in the right section (in red in the figure) will display a menu in the right section that allows selecting the type of cost to apply (in yellow in the figure). Selecting the “Consumption” type requires no further parameters, while selecting the “Reservation” type, to the left of the field, it will be possible to choose the Reservation period (in yellow in the figure).
+Selecting one or more regions in the left-hand section (in red in the figure) brings up on the right a menu for the cost type (in yellow in the figure): “Consumption” requires no further parameters, “Reservation” allows you to choose the reservation period.
 
-![Selezione della "Regione" e del "Cost Model"](assets/images/extract/media/image125.png)
+Up to three regions per provider can be selected, as indicated next to the “REGIONS” title; beyond the limit a message is shown. If a provider/region combination is not valid a warning is displayed: the providers highlighted in orange will be excluded from the simulation if you continue.
 
-After clicking the “Next” button, the user will find themselves in step 4 titled “Duration”.
+![Selecting the "Region" and the "Cost Model"](assets/images/extract/media/image125.png)
 
-From the “Duration” page of step 4, select an interval for the simulation among:
+After clicking the “Next” button, the user lands on step 4, titled “Duration”.
+
+In the “Duration” page of step 4, select an interval for the simulation among:
 
 - “One Month”
 - “Six Months”
 - “One Year”
 
-To return to the “Details” page, in the bottom right, click on the “Back” button. Instead, to proceed with the simulation, click on the “Launch Simulation” button.
+To go back to the “Details” page, click the “Back” button at the bottom right. To move on with the simulation, click the “Launch Simulation” button instead.
 
-![Selezione dell'intervallo di tempo](assets/images/extract/media/image126.png)
+![Selecting the time interval](assets/images/extract/media/image126.png)
 
-After clicking the “Launch Simulation” button, the user will find themselves on the “Results” page of step 5.
+After clicking the “Launch Simulation” button, the user lands on the “Results” page of step 5.
 
-Within the “Results” page, at the top, the “Simulation parameters” box can be viewed, which contains a summary of the parameters used. (in yellow in the figure)
+At the top of the “Results” page you can see the “Simulation parameters” box, which contains a summary of the parameters used. (in yellow in the figure)
 
-Below the “Summary” box, there are different sections, one for each destination provider (in red in the figure), and inside, we can view the list of resources that can be migrated to the provider (in green in the figure). Clicking on one of them will display a histogram graph. In this graph we can note:
+Below the “Summary” box there are several sections, one per destination provider (in red in the figure); inside each of them you can see the list of the resources that can be migrated to that provider (in green in the figure) and, clicking one of them, a bar chart is displayed. In this chart you can
+note:
 
-- A line parallel to the X-axis indicating the current cost of the resource.
-- A series of bars (one for each region and selected cost type) that will be red when the destination price is higher than the starting price or green when the price is lower than the current cost of the resource; hovering over one of them will display its reference.
-- A summary table of the selected cost types, which is used to generate the bar chart.
+- A line parallel to the X axis indicating the current cost of the resource.
+- A series of bars (one for each selected region and cost type), red when the destination price is higher than the starting one or green when the price is lower than the current cost of the resource; hovering over one of them shows its reference.
+- A summary table of the selected cost types, used to build the bar chart, with the estimated costs, the cost difference and the saving percentage.
 
-It is possible to view details for other simulations (in purple in the figure) using the procedure just described.
+The details of the other simulations can be viewed (in purple in the figure) with the procedure just described. If the simulation produces no usable result, a dedicated message is shown.
 
-To exit the simulation without saving, in the bottom right, click on the “Close” button.
+To leave the simulation without saving, click the “Close” button at the bottom right.
 
-To save the simulation, click on the “Save” button next to the “Close” button, and then click on “Confirm”.
+To save the simulation, click the “Save” button next to the “Close” button, then click “Confirm”.
 
-After clicking a button, the user is redirected to the “What If” tab page.
+After clicking either button, the user is redirected to the “What If” page.
 
-![Pagina dei risultati della simulazione WHAT IF](assets/images/extract/media/image127.png)
+![The WHAT IF simulation results page](assets/images/extract/media/image127.png)
 
-![Tabella riassuntiva della/e risorse](assets/images/extract/media/image128.png)
+![Summary table of the resource(s)](assets/images/extract/media/image128.png)
 
-It is possible to update and re-run a simulation without re-entering all data.
+A simulation can be updated and run again without re-entering all the data.
 
-To do this, click on the row to be modified. At this point, the user will be redirected to step 1 of the simulation, where all steps have been pre-filled using the saved parameters.
+To do so, click the row to be changed in the list of the previous simulations; the user is then redirected to step 1 of the simulation, where all the steps have been pre-filled with the saved parameters.
 
-![Avvio per l'aggiornamento della simulazione di tipo "Migrate to another provider"](assets/images/extract/media/image129.png)
+![Starting the update of a "Migrate to another provider" simulation](assets/images/extract/media/image129.png)
 
-#### Scenario “What If”: Change Resource Capacity
+#### “What If” scenario: Change Resource Capacity
 
-This functionality allows comparing the costs of a resource in case of modification of its technical characteristics.
+This feature makes it possible to compare the costs of a resource when its technical characteristics are changed.
 
-Still from the “What If” tab page, in the top right, click on the “Change resources capacity” box.
+Again from the “What If” page, click the “Change resources capacity“ box.
 
-![Accesso alla funzionalità "What If: Change resources capacity"](assets/images/extract/media/image130.png)
+![Opening the "What If: Change resources capacity" feature](assets/images/extract/media/image130.png)
 
-After doing so, the user will find themselves on the “Start” page of step 1.
+Having done so, the user lands on the “Start” page of step 1
 
-On the left, in the “Select Resources to change” box, the user can search for resources using three types of filters, including:
+On the left, in the “Select Resources to change” box, the user can search the resources through three kinds of filter:
 
-- “Search” which allows searching for a resource by name;
-- “Search by Type” which allows obtaining resources by selecting the resource type;
-- “Search by tags” which allows searching for resources using one or more tags associated with them.
+- “Search”, which allows you to look for a resource by name;
+- “Search by Type”, which allows you to obtain the resources by selecting the resource type;
+- “Search by tags”, which allows you to search the resources by one or more tags assigned to them.
 
-The resource table will only show resources that, within the Movincloud catalog, have more than one “Relationship” with different sizes but belong to the same region, price type, and operating system.
+The resources table only reports resources that, within the Movincloud catalogue, have more than one “Relation” with different sizes but belonging to the same region, the same price type and the same operating system.
 
-In the bottom left, there is the resource table, which can be filtered based on the parameters entered in the filter(s). Within the resource table, click on one of them and, using the “drag and drop” technique, drag it to the right, into the box titled “Currently selected:”.
+At the bottom left there is the resources table, which can be filtered according to the parameters entered in the filter or filters. In the resources table, click one of them and, using the “drag and drop” technique, drag it to the right, into the box titled “Currently selected:”.
 
-A maximum of three resources can be included per simulation.
+A maximum of three resources per simulation can be added.
 
-Subsequently, in the bottom right, click on the “Next” button.
+Then, at the bottom right, click the “Next” button.
 
-![Selezione delle risorse da cui modificare le capacità](assets/images/extract/media/image131.png)
+![Selecting the resources whose capacity is to be changed](assets/images/extract/media/image131.png)
 
-After doing so, the user will find themselves on the “Resource Provider” page of step 2, where it is possible to modify the size of one or more resources.
+Having done so, the user lands on the “Resource Provider” page of step 2, where the size of one or more resources can be changed.
 
-Within the “Resource Provider” page of step 2, for a resource, click on the dropdown menu in the “Size” column and select a different size from the initial one.
+In the “Resource Provider” page of step 2, for a given resource, click the drop-down of the “Size” column and select a size different from the initial one among those available, for which the number of CPUs and the RAM are shown. If no alternative size exists for the resource, a dedicated message is displayed.
 
-After that, in the bottom right, click on the “Next” button to continue the simulation.
+Then, at the bottom right, click the “Next” button to carry on with the simulation.
 
-To return to the “Start” page of step 1, click on the “Back” button.
+To go back to the “Start” page of step 1, click the “Back” button.
 
-![Modifica della size di una risorsa](assets/images/extract/media/image132.png)
+![Changing the size of a resource](assets/images/extract/media/image132.png)
 
-After clicking the “Next” button, the user will find themselves on the “Duration” page of step 3.
+After clicking the “Next” button, the user lands on the “Duration” page of step 3.
 
-Within the aforementioned page, it is necessary to select an interval for the simulation.
+In that page an interval for the simulation has to be selected.
 
-After that, in the bottom right, click on the “Launch Simulation” button.
+Then, at the bottom right, click the “Launch Simulation” button.
 
-To go back, click on the “Back” button; in this way, the user will find themselves on the “Resource Provider” page of step 2.
+To go back, click the “Back” button; this takes the user to the “Resource Provider” page of step 2.
 
-![Selezione dell'intervallo per la simulazione](assets/images/extract/media/image133.png)
+![Selecting the interval for the simulation](assets/images/extract/media/image133.png)
 
-After clicking the “Launch Simulation” button, the user will find themselves on the “Results” page of step 4.
+After clicking the “Launch Simulation” button, the user lands on the “Results” page of step 4
 
-Within the “Results” page, at the top, there is a “Summary” box that advises whether to modify the size of the resources. Below, there is an histogram graph, where the purple bar represents current costs, while the green bar represents target costs.
+At the top of the “Results” page there is the “Summary” box, which advises whether to change the size of the resources. Below it there is a bar chart, where the purple bar represents the current costs and the green bar the target costs, followed by the table with the old and the new size, the estimated costs and the saving percentage.
 
-To save the simulation, click on the “Save” button next to the “Close” button, and then click on “Confirm”. After doing so, the user is redirected to the “What If” page.
+To save the simulation, click the “Save” button next to the “Close” button, then click “Confirm”. The user is then redirected to the “What If” page.
 
-To exit the simulation without saving it, in the bottom right, click on the “Close” button. After doing so, the user will find themselves on the “What If” page.
+To leave the simulation without saving it, click the “Close” button at the bottom right. The user is then taken to the “What If” page.
 
-![](assets/images/extract/media/image134.png)
-![](assets/images/extract/media/image135.png)
-![Parametri di configurazione e consiglio sulla simulazione](assets/images/extract/media/image136.png)
+![Configuration parameters and advice on the simulation](assets/images/extract/media/image136.png)
 
-#### What If scenario Export
+#### Exporting a What If scenario
 
-For a simulation of a resource size modification, it is possible to export it in PDF, CSV, and JSON format.
+Every saved simulation can be exported as PDF, CSV or JSON; the export is available for both types of simulation.
 
-Within the “What If” page, at the bottom, there is a table of simulations; click on the “Capacity” button located in the top right corner of the aforementioned table.
+In the “What If” page, in the “Previous simulations” section, select the tab of the desired type: “Provider Migration” or “Capacity”.
 
-After doing so, the table shows simulations regarding resource size modification.
+For the simulation to be exported, click the download icon button in the “Export” column.
 
-For a simulation, click on the button depicting an arrow.
+A sub-menu then opens with the three available formats: “Pdf”, “Csv” and “Json”. Selecting one of them, the file is generated by the system and downloaded automatically.
 
-At this point, a sub-menu will open where it is possible to export in the three previously described formats.
+![Exporting a simulation](assets/images/extract/media/image137.png)
 
-![Export della simulazione](assets/images/extract/media/image137.png)
+A simulation, of either type, can also be printed.
 
-Also for a simulation, it is possible to print it.
+For a given simulation, click the kebab menu and then click the “Print” option.
 
-For a simulation, click on the kebab menu, and then click on the “Print” option.
+A modal with the print preview of the document then appears. Finally, click the “Print” button to start printing the document.
 
-At this point, a modal of the print preview will appear. Finally, click on the “Print” button to start printing the document.
+![Printing a simulation](assets/images/extract/media/image138.png)
 
-![Stampa della simulazione](assets/images/extract/media/image138.png)
+For a given simulation, click the kebab menu.
 
-For a simulation, click on the kebab menu.
+From the list of options, click “Delete”.
 
-From the list of options, click on “Delete”.
+![Option to delete a simulation](assets/images/extract/media/image139.png)
 
-![Opzione per eliminare una simulazione](assets/images/extract/media/image139.png)
+After clicking the “Delete” option, a modal appears asking you to confirm the deletion of the simulation by clicking the “Yes” button
 
-After clicking the “Delete” option, a modal will appear where it is necessary to confirm the deletion of the simulation by clicking on the “Confirm” button.
+The simulation is then no longer present in the table.
 
-After doing so, the simulation is no longer present in the table.
+If you do not want to confirm the deletion of the simulation, click the “No” button.
 
-If, however, you do not want to confirm the deletion of the simulation, click on the “Cancel” button.
+![Confirming the deletion of a simulation](assets/images/extract/media/image140.png)
 
-![Conferma dell'eliminazione della simulazione](assets/images/extract/media/image140.png)
 
-### Reporting Tools
+### Reporting tools
 
-The reporting functionality, specific to features, allows generating global reports of the information available for the various providers. Within the pages, there will also be the possibility to create files to facilitate information sharing.
+The reporting feature, specific to each functional area, makes it possible to generate global reports of the information available for the various
+providers; inside the pages it is also possible to create files to make sharing that information easier.
 
-To access the functionality, above the breadcrumb path, click on the “Reports” tab.
+To reach the feature, select the “Reports” entry from the Inventory menu
 
-![Accesso al report di Catalogo](assets/images/extract/media/image141.png)
+![Opening the Catalogue report](assets/images/extract/media/image141.png)
 
 #### Available report types
 
-- **INVENTORY Summary** – Summary on the quantity of main inventory resources based on the selected provider/subsystem combination.
+- **INVENTORY Summary** – Summary of the quantity of the main inventory resources for the selected provider/subsystem combination.
 
-#### Report Creation
+#### Creating a report
 
-At the top right of the page, we can click on the “New Report” button to start creating a report. Specifically, a modal is displayed containing the list of available report types.
+At the top right of the page you can click the “New Report” button to start the creation of a report; a modal is displayed containing the list of the available report types.
 
-![Creazione nuovo report](assets/images/extract/media/image142.png)
+![Creating a new report](assets/images/extract/media/image142.png)
 
-Once the report type is selected, click on the “Configure” button to select the providers to include in the report. In the newly opened window, we find the “Provider” field which allows selecting one or more pre-existing providers in the system. Subsequently, it is possible to select one or more subsystems to include in the report; if no providers are selected, no subsystem can be selected. Finally, there is a “tag” section to include only resources that have the entered tag.
+Once the report type has been selected, click the “Configure” button to choose the providers to include in the report. In the window that opens there is the “Provider” field, which allows you to select one or more providers already present in the system; then one or more subsystems to include in the report can be selected — if no provider is selected, no subsystem can be chosen. Finally there is a “tag” section to include only the resources carrying the given tag
 
-![Configurazione del report](assets/images/extract/media/image143.png)
+The fields of the “Report Data” section depend on the report type: for the INVENTORY Summary they are “Provider”, “Subsystem” and “Tags”, plus “Date Range” if the type provides for a date interval. Choosing a predefined time period is available only for recurring reports.
 
-At this point, the user can choose between two different actions:
+![Configuring the report](assets/images/extract/media/image143.png)
 
-- Create a static report that will be saved in the system.
-- Schedule a task that generates the report periodically.
+At this point the user can choose between two different actions:
 
-To confirm the creation of a static report, verify that “One-Shot” has been selected for the “Report type” field and click the “Submit” button at the bottom.
+- Creating a static report that will be saved in the system.
+- Scheduling a recurring generation of the report.
 
-After a loading period, the newly generated report will be visible in the list.
+To confirm the creation of a static report, check that “One-Shot” is selected for the “Report type” field and click the “Submit” button at the bottom.
 
-![Lista dei report effettuati](assets/images/extract/media/image144.png)
+After a loading period the report just generated can be seen in the list.
 
-##### Report Scheduling
+![List of the generated reports](assets/images/extract/media/image144.png)
 
-If, instead, you want to schedule automatic report execution, it will be necessary to select “Recurring” for the “Report Type” field. In this case, the window refreshes to show additional parameters for configuring the periodic report.
+##### Scheduling the report
+
+If instead you want to schedule the automatic execution of the reports, you have to select “Recurring” for the “Report Type” field; the window is then updated to show the additional parameters for configuring the periodic report.
 
 The parameters to enter are:
 
-- Period: allows selecting the report sending frequency (hourly, daily, ...).
-- "Receive only if not empty" if selected, the file will not be sent when it contains no information.
-- Report Language: allows selecting the language used in the report.
-- File format: allows selecting one or more file types to include in the email.
-- User E-mails: allows entering an email address to send reports to. After entering an an email, it is necessary to press “Enter” on the keyboard to confirm its insertion. Once pressed, the newly entered email will move to the box at the bottom, and the field will be cleared to allow the insertion of a new email, if necessary.
+- Schedule Dates Mode: in the “Report Data” section, it states which data to include in every delivery: a predefined interval (“Time Period”), the last N days (“Last N days”) or fixed dates (“Fixed Dates”).
+- Period: allows you to select how often the report is sent (hourly, daily, ...); choosing “Custom” you can enter a Cron expression directly, which is validated by the system.
+- Date and time of the first schedule, with the option to send the first occurrence immediately.
+- Date and time when the schedule ends, or the option not to set an end date.
+- "Receive only if not empty": if selected, the file is not sent when it contains no information
+- "Report's language": allows you to select the language used in the report.
+- File format: allows you to select one or more file types to include in the e-mail.
+- User E-mails: allows you to enter an address the reports are sent to; after typing an address you have to press “Enter” on the keyboard to confirm it — once pressed, the address just entered moves to the box at the bottom and the field is cleared so that, if needed, a new address can be entered.
 
-![Parametri dei report schedulati](assets/images/extract/media/image145.png)
+![Parameters of the scheduled reports](assets/images/extract/media/image145.png)
 
-Having configured all parameters, the “Submit” button will become clickable. Click it to confirm the insertion, and after a loading period, the newly generated report will be visible in the list.
+Once all the parameters have been configured the “Submit” button becomes clickable; click it to confirm and, after a loading period, the report just generated can be seen in the list.
 
-![Lista dei report effettuati](assets/images/extract/media/image144.png)
+![List of the generated reports](assets/images/extract/media/image144.png)
 
-##### List of scheduled reports
+##### List of the scheduled reports
 
-To view the list of scheduled reports, select the “Scheduled” tab at the top left of the reports page.
+To see the list of the scheduled reports, select the “Scheduled” tab at the top of the reports page; the “Ready” tab shows instead the reports already generated
+.
 
-![Lista dei report schedulati](assets/images/extract/media/image146.png)
+![List of the scheduled reports](assets/images/extract/media/image146.png)
 
-On this page, you will find the list and related information of scheduled reports present in the system. For each result, by clicking the “Three dots” button on the right, three operations can be performed:
+This page holds the list and the related information of the scheduled reports present in the system. For each result, clicking the “three dots” button on the right, the following operations can be performed:
 
-- View the last generated report.
-- Edit the schedule settings; it will not be possible to modify the selected providers or subsystems.
-- Delete the schedule to stop sending emails.
+- Viewing the last report generated.
+- Editing the settings of the schedule; the selected providers or subsystems cannot be changed.
+- Suspending or resuming the sending of the e-mails, with the “Disable schedule” and “Enable schedule” options.
+- Deleting the schedule to stop the sending of the e-mails.
 
-![Modifica di una schedule](assets/images/extract/media/image147.png)
+![Editing a schedule](assets/images/extract/media/image147.png)
 
-##### Using reports
+##### Using the reports
 
-By clicking on a static report row, or using the “Show report” button available for scheduled reports, it will be possible to view the detail page of the selected report.
+Clicking the row of a static report, or using the “Show report” button available for the scheduled ones, opens the detail page of the selected report.
 
-Within the Inventory report summary, there is a “Stats” section showing the number of disks, interfaces, networks, and virtual machines belonging to the selected provider.
+In the summary of the Inventory report there is a “Stats” section holding the number of disks, interfaces, networks and virtual machines belonging to the selected provider.
 
-Below the “Stats” section, the filters used by the user to generate the report are present.
+Below the “Stats” section there are the filters used to generate the report.
 
-Below the filters, there is a summary table of resources belonging to the providers. On the right, there are two buttons: “PRINT” and “EXPORT”.
+Below the filters there is the summary table of the resources belonging to the providers. On the right there are two buttons: “PRINT” and “EXPORT”. If the report holds too many rows to be displayed in full on screen, a notice invites you to download the file to consult it in its entirety.
 
-Clicking on the “PRINT” button, a print preview modal appears. To print the report, click on the “Print” button in the bottom right; at this point, the printing of the report will start.
+Clicking the “PRINT” button, a print preview modal appears. To print the report, click the “Print” button at the bottom right; printing then starts.
 
-Clicking on the “EXPORT” button, it is possible to export the report in “.csv”, “.json”, or “.pdf” format.
+Clicking the “EXPORT” button, the report can be exported as “.csv”, “.json” or “.pdf”.
 
-To return to the “Results” tab, in the bottom right, click on the “CLOSE” button or in the top left, click on the left-pointing arrow, next to the report title.
+To go back to the report list, click the “CLOSE” button at the bottom right or, at the top left, the left-pointing arrow next to the report title.
 
-![Dettagli dei report](assets/images/extract/media/image148.png)
+![Report details](assets/images/extract/media/image148.png)
