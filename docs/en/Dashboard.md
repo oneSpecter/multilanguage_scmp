@@ -1,22 +1,22 @@
 # Dashboard
 
-Accessing the Movincloud, the homepage presents a summary of four sections: inventory, monitoring, costs, and security.
+When you log in to Movincloud, the “Overview” homepage presents a summary of the four areas of the platform: inventory, costs, security and monitoring. Only the areas the user has permissions for are shown.
 
-In particular:
+Below the title, a bar of links (“Inventory”, “Costs”, “Security”, “Monitoring”) jumps straight to the corresponding section of the page.
 
-- The Inventory section shows:
-- A pie chart regarding Movincloud resources (for each resource of a single provider, an Movincloud type instance is created, so the data can be considered as the sum of all resources present across all providers).
-- A pie chart for each provider type.
-- The monitoring section shows the most populated metrics with their relative usage.
-- The costs section shows a summary of costs for the last 30 days.
-- The security section shows the most severe vulnerabilities.
+The “Key indicators” section summarises the four areas in as many cards: the total number of resources, the total costs, the compliance percentage with the number of compliant assessments, and the average CPU usage.
 
-The title of each section is clickable and leads to the specific dashboard.
+In detail:
 
-![Dashboard section "Inventory"](assets/images/extract/media/image100.png)
+- The “Inventory” section shows a donut chart of the resources by type, with the total in the middle and, in the legend, the count and the percentage of every type; below it, “Resources by provider” reports one card per provider with the distribution of its resources and its most frequent type.
+- The “Costs” section shows the recalculated value for the period and, for the users who see full costs, also the total, the forecast and the difference between recalculated and total; the “Cost trend” chart with daily and cumulative costs follows.
+- The “Security” section shows a donut chart of the assessment outcomes (“Compliant”, “Non-compliant”, “Not applicable”) and a card with the overall compliance percentage; below it, “Assessments by provider” reports the outcomes provider by provider.
+- The “Monitoring” section shows the metrics of the selected tenant, computed as an average over the last five hours: CPU, memory, storage, network packets, vGateway, K8S, bastion and firewall. Metrics with no samples in the period report “No data”. The “Show Grafana panels” button opens the Grafana panels with the operational status, which can be collapsed again with “Hide Grafana panels”.
 
-![Dashboard section "Monitoring"](assets/images/extract/media/image101.png)
+![Dashboard "Inventory" section](assets/images/extract/media/image100.png)
 
-![Dashboard section "Costs](assets/images/extract/media/image102.png)
+![Dashboard "Monitoring" section](assets/images/extract/media/image101.png)
 
-![Dashboard section "Security"](assets/images/extract/media/image103.png)
+![Dashboard "Costs" section](assets/images/extract/media/image102.png)
+
+![Dashboard "Security" section](assets/images/extract/media/image103.png)
