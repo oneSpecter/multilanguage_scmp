@@ -1,166 +1,150 @@
 # Monitoring
 
-The Movincloud collects metrics from all cloud providers and aggregates them by macro categories.
+Movincloud collects metrics from every cloud provider and aggregates them by macro-category, so that metrics coming from different providers can be compared.
 
-This aggregation allows comparison between metrics from different providers.
+The monitoring module is reached from its own menu, which covers the general dashboard, the detail dashboards per resource type (virtual machines, storage, Kubernetes, pods, networks with their subtypes, bastion and firewall), the quotas, the alerts and the reports. As shown in the figure:
 
-By accessing the dashboard, we can see how this aggregation mechanism provides an overview of resource utilization, divided by provider and organized by associated resource type.
+![Opening the Monitoring module](assets/images/extract/media/image259.png)
 
-Within the functionality, it is possible to filter by resource type using the tab bar at the top, while for a general view, the dashboard can be used.
+### Monitoring dashboard
 
-The monitoring module can be accessed via the dedicated menu. As shown in the figure:
+The “Dashboard” entry shows an overview of resource usage, broken down by provider and organised by the associated resource type, while the detail entries narrow the view to a single type.
 
-![Access to the Monitoring Module](assets/images/extract/media/image259.png)
+![Monitoring dashboard](assets/images/extract/media/170325001.png)
 
-### Monitoring Dashboard
+#### Filters of the Monitoring section
 
-At this point, the user will be on the "Dashboard" monitoring tab page.
+At the top left are the filters on the retrieved resources: provider type, subsystem name and, in the detail dashboards only, resource name. They allow multiple selection and can be combined to reach the desired granularity.
 
-![Monitoring Dashboard](assets/images/extract/media/170325001.png)
+![Monitoring filters](assets/images/extract/media/170325002.png)
 
-#### Monitoring Section Filters
+### Quotas dashboard
 
-Within the page, a series of filters are available that can be selected simultaneously to filter the dashboard results.
+The “Quotas” page shows the consumption and the limits applied to the VCloud subsystems and to the integrated backup systems.
 
-The main filter is the display period, which can be found at the top right. Clicking on it will open a selection window (in yellow in the figure) where it will be possible to either enter a customized time range, using the "From" and "To" fields on the left, or select a "Smart" time range by directly clicking on the desired choice in the scrollable section on the right.
+![Opening the Quotas section](assets/images/extract/media/170325003.png)
 
-![Monitoring Time Filter](assets/images/extract/media/120325006.png)
+At the top there is the filter bar, which allows filtering by provider (“Search by provider”), by subsystem (“Search by Subsystem”) and by backup system (“Search by Backup System”); the two buttons at the right of the bar run the search and clear the filters.
 
-Additionally, a series of filters are available at the top left of the page, allowing users to filter the retrieved resources. Specifically, it is possible to filter by:
+Below the filters, the table reports for every subsystem the tenant and the name and, for CPU, memory, storage and backup, the used value, the limit and the usage percentage.
 
-- Provider type
-- Subsystem name.
-- Resource name (only in detailed dashboards)
+![Quotas dashboard](assets/images/extract/media/170325004.png)
 
- These filters allow for multiple values to be selected and can be combined to achieve the desired granularity.
+### Alerts on quota usage
 
-![Monitoring Functionality Filters](assets/images/extract/media/170325002.png)
+The “Alerting” module sends a notification when the quota usage thresholds are exceeded. The page lists the rules configured in the system with their schedule, alert type, send type, creation date, last send date, rule state (“Enabled” or “Disabled”) and the outcome of the last run (“In progress”, “Succeeded” or “Failed”).
 
-### Quotas Dashboard
+![Opening the Alerting system](assets/images/extract/media/090425002.png)
 
-The Quotas dashboard, available in the "Quotas" tab, allows viewing the details of consumption and related limits applied to Vcloud type subsystems.
+#### Creating a new Alert
 
-To access it, you need to click the button at the top of the tab bar.
+The “New rule” button, at the top right, opens the configuration page, organised in three boxes.
 
-![Access to the Quotas section](assets/images/extract/media/170325003.png)
+![Creating a new Alert](assets/images/extract/media/090425004.png)
 
-At this point, the user will be on the "Quotas" monitoring tab page.
-At the top, we can see a filter bar, which allows filtering by provider or subsystem. Additionally, it is possible to view the filters for the chart using the "Show additional filters" button; these filters modify the chart's display.
-Below the filters, there is a table indicating the subsystem name and
-the quotas used, limits, and an average utilization divided by resource type.
-Finally, at the bottom, a time-based chart on the selected metric in the filters can be displayed.
+In the “Alert configuration” box:
 
-![Quotas Dashboard](assets/images/extract/media/170325004.png)
+- **“Rule active”**: enables or disables the rule
+- **“Alert Type”**: select the type of alert
+- **“Quota Type”**: select the quota to monitor, among CPU, memory, storage and backup
+- **“Threshold (%)”**: enter the percentage above which the alert is sent
+- **“Subsystems”** and **“Backup Systems”**: select the systems to monitor; at least one of the two must be filled in
 
-### Alarms on Quota Usage
+In the “Schedule configuration” box you set how often the checks run, the date and time of the first run and, unless “Do not set end schedule date” is selected, the end date and time.
 
-To allow the user to receive notifications when quota usage thresholds are exceeded, an "Alerting" module has been included. To access it, you need to select the tab at the top of the Monitoring functionality.
+In the “Delivery configuration” box:
 
-![Access to the Alerting system](assets/images/extract/media/090425002.png)
+- **“Alert Send Type”**: select how the alert is received, by e-mail or RabbitMQ (for automatic integration with other systems)
+- **“Alert Format”**: select the format of the file carrying the alert details. The field is enabled once the send type has been chosen: “JSON” is always available, “CSV” only with delivery by e-mail
+- **“Emails”**: shown only when the alert is sent by e-mail. After typing an address you have to press “Enter” on the keyboard to confirm it: the address moves to the box below and the field is cleared so that a new address can be entered, if needed.
 
-Within the page, we find the list of "alerts" configured on the system, along with their respective configurations.
+![Configuration page](assets/images/extract/media/090425005.png)
 
-#### New Alert Creation
+#### Viewing, editing and deleting an Alert
 
-Using the menu available on the right, it is possible to add a new alert to the system.
-To do this, we select the displayed "New alert" option, and a configuration page will open.
+For every rule, the “three dots” button on the right offers the following operations:
 
-![New Alert Creation](assets/images/extract/media/090425004.png)
+- “Show rule” to view the configuration of the rule
+- “Edit rule” to change its settings
+- “Delete rule” to remove it and stop the notifications
+- “Enable rule” and “Disable rule” to suspend or resume the checks without deleting the rule
+- “Schedule Now” to run a check immediately
+- “Schedule history” to consult the history of the runs
 
-On the configuration page, all fields must be filled in, specifically:
+![Operations on the alerts](assets/images/extract/media/090425003.png)
 
-- **"Alert type"**: Select the alert type
-- **"Alert schedule"**: Indicates the frequency of checks to be performed
-- **"Quota type"**: Select the quota type to monitor
-- **"Threshold (%)"**: Enter the percentage beyond which the alert will be sent.
-- **"Subsystems"**: Select one or more subsystems to monitor
-- **"Alert send type"**: Select the type of alert to receive, via e-Mail or Rabbit queue (for automatic integration with other systems)
-- **"Alert format"**: Select the format of the sent file that defines the alert details.
-- **"Emails"**: By selecting E-mail as the notification type, we can enter an email address to send reports to. After entering an email, it is necessary to press "Enter" on the keyboard to confirm its entry. Once pressed, the newly entered email will move to the box at the bottom, and the field will be cleared to allow for the entry of a new email, if necessary.
+### Reporting tools
 
-![Configuration Page](assets/images/extract/media/090425005.png)
+The reporting feature, specific to each functional area, makes it possible to generate global reports of the information available for the various providers; inside the pages it is also possible to create files to make sharing that information easier.
 
-#### Viewing, Modifying, and Deleting an Alert
+To reach the feature, select the “Reports” entry of the Monitoring menu.
 
-On this page, we find the list and related information of the alerts present in the system. For each result, by clicking the "Three dots" button on the right, it will be possible to perform three operations:
+![Opening the reporting feature](assets/images/extract/media/MR001.png)
 
-- View the "alert" configuration
-- Edit the alert settings.
-- Delete the schedule to stop sending emails.
+#### Available report types
 
-![Alert Operations](assets/images/extract/media/090425003.png)
+- **Monitoring Threshold Quotas** – List of the VCloud and/or Backup subsystems integrated in Movincloud, with the detail of the usage quotas (CPU, Memory, Storage, Backup). Depending on the combination of filters selected, the subsystems exceeding a given usage threshold can be filtered.
 
-### Reporting Tools
+#### Creating a report
 
-The reporting functionality, specific to each feature, allows generating global reports of the information available for the various
-providers. Within the pages, the possibility will also be given to create files to facilitate information sharing.
-To access the functionality, above the breadcrumb path, click on the "Reports" tab.
+At the top right of the page, the “New report” button starts the creation of a report: a modal is displayed with the list of the available types.
 
-![Access to Catalog Report](assets/images/extract/media/image141.png)
+![Creating a new Report](assets/images/extract/media/MR002.png)
 
-#### Available Report Types
+Once the type has been selected, click “Configure” to set the filters of the report. The fields required in the “Report data” section depend on the type: for the Monitoring Threshold Quotas they are the provider, the subsystem, the backup system and the usage threshold. If the type provides for a date interval, the “Date range” field appears in the same section for one-shot reports only.
 
-- **Monitoring Threshold Quotas** – List of VCloud and/or Backup subsystems, integrated into the Movincloud, with details of utilization quotas (CPU, Memory, Storage, Backup). Based on the selected filter combination, it is possible to filter subsystems that exceed a certain utilization threshold.
+![Configuring the report](assets/images/extract/media/MR003.png)
 
-#### Report Creation
+At this point the user can choose between two different actions:
 
-At the top right of the page, we can click the "New Report" button to start creating a report. Specifically, a modal is displayed containing the list of available report types.
+- creating a static report that will be saved in the system;
+- scheduling a recurring generation of the report.
 
-![New Report Creation](assets/images/extract/media/image142.png)
+To confirm the creation of a static report, check that “One-Shot” is selected for the “Report Type” field and click the “Submit” button at the bottom. After a loading period the generated report will be visible in the list of the “Ready” tab.
 
-Once the report type is selected, click the "Configure" button to select the providers to include in the report. In the newly opened window, we find the "Provider" field which allows selecting one or more pre-existing providers in the system. Subsequently, it is possible to select one or more subsystems to include in the report; if no providers are selected, no subsystems can be selected. Finally, there is a "tag" section to include only resources that have the entered tag.
+![List of the generated reports](assets/images/extract/media/MR004.png)
 
-![Report Configuration](assets/images/extract/media/image143.png)
+##### Scheduling a report
 
-At this point, the user can choose between two different actions:
+If instead you want the report to run automatically, select “Recurring” for the “Report Type” field: the window is updated to show the additional parameters of the periodic report.
 
-- Create a static report that will be saved in the system.
-- Schedule a job that generates the report periodically.
-
-To confirm the creation of a static report, verify that "One-Shot" has been selected for the "Report type" field and click the "Submit" button at the bottom.
-After a loading period, the newly generated report will be visible in the list.
-
-![List of Generated Reports](assets/images/extract/media/image144.png)
-
-##### Report Scheduling
-
-If, on the other hand, automatic report execution is desired, it will be necessary to select "Recurring" for the "Report Type" field. In this case, the window updates to show additional parameters for configuring the periodic report.
 The parameters to enter are:
 
-- Period: allows selecting the report sending frequency (hourly, daily, ...).
-- "Receive only if not empty": if selected, the file will not be sent when it contains no information.
-- Report Language: allows selecting the language used in the report.
-- File format: allows selecting one or more file types to include in the email.
-- User E-mails: allows entering an email address to send reports to. After entering an email, it is necessary to press "Enter" on the keyboard to confirm its entry. Once pressed, the newly entered email will move to the box at the bottom, and the field will be cleared to allow for the entry of a new email, if necessary.
+- “Period”: how often the report is sent (hourly, daily, ...); choosing “Custom” you can enter a Cron expression directly, which is validated by the system
+- date and time of the first schedule, with the option to send the first occurrence immediately (“First schedule now”)
+- date and time when the schedule ends, or the “Do not set end schedule date” option not to set one
+- “Receive only if not empty”: if selected, the file is not sent when it contains no information
+- “Report's language”: the language used in the report
+- “File format”: one or more file formats to include in the e-mail
+- “User E-mails”: the addresses the reports are sent to. After typing an address you have to press “Enter” on the keyboard to confirm it: the address moves to the box below and the field is cleared so that a new address can be entered, if needed
 
-![Scheduled Report Parameters](assets/images/extract/media/image145.png)
+![Parameters of the scheduled report](assets/images/extract/media/MR005.png)
 
-Having configured all parameters, the "Submit" button will become clickable. Click it to confirm the entry, and after a loading period, the newly generated report will be visible in the list.
+Once all the parameters are configured the “Submit” button becomes clickable: click it to confirm and, after a loading period, the schedule will be visible in the list.
 
-![List of Generated Reports](assets/images/extract/media/image144.png)
+##### List of the scheduled reports
 
-##### List of Scheduled Reports
+To see the list of the scheduled reports, select the “Scheduled” tab at the top of the reports page.
 
-To view the list of scheduled reports, select the "Scheduled" tab located at the top left of the reports page.
+![List of the scheduled reports](assets/images/extract/media/MR006.png)
 
-![List of Scheduled Reports](assets/images/extract/media/image146.png)
+This page holds the list and the related information of the scheduled reports present in the system. For each result, clicking the “three dots” button on the right, you can:
 
-On this page, we find the list and related information of the scheduled reports present in the system. For each result, by clicking the "Three dots" button on the right, it will be possible to perform three operations:
+- view the last report generated (“Show report”)
+- edit the settings of the schedule (“Edit”), without being able to change the selected providers or subsystems
+- delete the schedule (“Remove”) to stop the sending of the e-mails
+- suspend or resume the sending of the e-mails (“Disable schedule” and “Enable schedule”)
 
-- View the last generated report.
-- Edit the schedule settings; it will not be possible to modify the selected providers or subsystems.
-- Delete the schedule to stop sending emails.
+![Editing a schedule](assets/images/extract/media/MR007.png)
 
-![Modify a schedule](assets/images/extract/media/image147.png)
+##### Using the reports
 
-##### Report Usage
+Clicking the row of a static report, or using the “Show report” button available for the scheduled ones, opens the detail page of the selected report.
 
-By clicking on a static report row, or by using the "Show report" button available for scheduled reports, it will be possible to view the detail page of the selected report.
-Within the Inventory report summary, there is a "Stats" section which includes the number of disks, interfaces, networks, and virtual machines belonging to the selected provider.
-Below the "Stats" section, there are the filters used by the user to generate the report.
-Below the filters, there is a summary table of resources belonging to the providers. On the right, there are two buttons: "PRINT" and "EXPORT".
-Clicking the "PRINT" button will display a print preview modal. To print the report, click the "Print" button at the bottom right; at this point, the printing of the report will start.
-Clicking the "EXPORT" button allows exporting the report in ".csv", ".json", or ".pdf" format.
-To return to the "Results" tab, click the "CLOSE" button at the bottom right, or click the left-pointing arrow at the top left, next to the report title.
+At the top are the filters used to generate the report and the date interval of the data; on the right there are the “PRINT” and “EXPORT” buttons. Below is the summary table, paginated; if the report holds too many rows to be displayed in full on screen, a notice invites you to download the file to consult it in its entirety.
 
-![Report Details](assets/images/extract/media/image148.png)
+Clicking “PRINT” opens the browser print dialog, with a preview of the report. Clicking “EXPORT” the report can be exported as “.csv”, “.json” or “.pdf”.
+
+To go back to the report list, click the “CLOSE” button at the bottom right or the left-pointing arrow at the top, next to the report title.
+
+![Report detail](assets/images/extract/media/image148.png)

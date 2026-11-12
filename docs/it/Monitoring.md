@@ -1,101 +1,85 @@
+# Monitoring
 
-# monitoring
+La Movincloud raccoglie metriche da tutti i cloud provider e le aggrega per macro-categorie, così da permettere il confronto tra metriche di provider diversi.
 
-La Movincloud raccoglie metriche da tutti i cloud provider e le aggrega per macro-categorie.
-
-Questa aggregazione consente il confronto tra metriche di provider diversi.
-
-Accedendo alla dashboard, è possibile vedere come questo meccanismo di aggregazione fornisca una panoramica dell’utilizzo delle risorse, suddivisa per provider e organizzata per tipologia di risorsa associata.
-
-All’interno della funzionalità, è possibile filtrare per tipologia di risorsa utilizzando la barra delle tab in alto, mentre per una visione generale si può utilizzare la dashboard.
-
-Il modulo di monitoring è accessibile tramite il menu dedicato. Come mostrato in figura:
+Il modulo di monitoring è accessibile dal menu dedicato, che comprende la dashboard generale, le dashboard di dettaglio per tipologia di risorsa (macchine virtuali, storage, Kubernetes, pod, reti con i relativi sottotipi, bastion e firewall), le quote, gli alert e i report. Come mostrato in figura:
 
 ![Accesso al modulo Monitoring](assets/images/extract/media/image259.png)
 
 ### Dashboard di monitoring
 
-A questo punto, l’utente si troverà nella pagina della tab “Dashboard” del monitoring.
+La voce “Dashboard” mostra una panoramica dell’utilizzo delle risorse, suddivisa per provider e organizzata per tipologia di risorsa associata, mentre le voci di dettaglio limitano la vista a una singola tipologia.
 
 ![Dashboard di monitoring](assets/images/extract/media/170325001.png)
 
 #### Filtri della sezione Monitoring
 
-All’interno della pagina sono disponibili una serie di filtri che possono essere selezionati contemporaneamente per filtrare i risultati della dashboard.
-
-Il filtro principale è il periodo di visualizzazione, che si trova in alto a destra. Cliccandoci sopra si apre una finestra di selezione (in giallo in figura) dove è possibile inserire un intervallo di tempo personalizzato, utilizzando i campi “Da” e “A” a sinistra, oppure selezionare un intervallo “Smart” cliccando direttamente sulla scelta desiderata nella sezione scorrevole a destra.
-
-![Filtro temporale Monitoring](assets/images/extract/media/120325006.png)
-
-Inoltre, in alto a sinistra della pagina sono disponibili una serie di filtri che permettono di filtrare le risorse recuperate. In particolare, è possibile filtrare per:
-
-- Tipologia provider
-- Nome sottosistema
-- Nome risorsa (solo nelle dashboard di dettaglio)
-
-Questi filtri permettono la selezione multipla e possono essere combinati per ottenere la granularità desiderata.
+In alto a sinistra sono disponibili i filtri sulle risorse recuperate: tipologia provider, nome del sottosistema e, nelle sole dashboard di dettaglio, nome della risorsa. Permettono la selezione multipla e possono essere combinati per ottenere la granularità desiderata.
 
 ![Filtri funzionalità Monitoring](assets/images/extract/media/170325002.png)
 
 ### Dashboard Quotas
 
-La dashboard Quotas, disponibile nella tab “Quotas”, consente di visualizzare i dettagli dei consumi e dei limiti applicati ai sottosistemi di tipo Vcloud.
-
-Per accedervi, è necessario cliccare il pulsante in alto nella barra delle tab.
+La pagina “Quotas” mostra i consumi e i limiti applicati ai sottosistemi di tipo VCloud e ai sistemi di backup integrati.
 
 ![Accesso alla sezione Quotas](assets/images/extract/media/170325003.png)
 
-A questo punto, l’utente si troverà nella pagina della tab “Quotas” del monitoring.
-In alto è presente una barra filtri che consente di filtrare per provider o sottosistema. Inoltre, è possibile visualizzare i filtri per il grafico tramite il pulsante “Mostra filtri aggiuntivi”; questi filtri modificano la visualizzazione del grafico.
-Sotto i filtri, è presente una tabella che indica il nome del sottosistema e le quote utilizzate, i limiti e un utilizzo medio suddiviso per tipologia di risorsa.
-Infine, in basso, può essere visualizzato un grafico temporale sulla metrica selezionata nei filtri.
+In alto è presente la barra dei filtri, che permette di filtrare per provider (“Search by provider”), per sottosistema (“Search by Subsystem”) e per sistema di backup (“Search by Backup System”); i due pulsanti a destra della barra avviano la ricerca e azzerano i filtri.
+
+Sotto i filtri, la tabella riporta per ogni sottosistema il tenant e il nome e, per CPU, memoria, storage e backup, il valore utilizzato, il limite e la percentuale di utilizzo.
 
 ![Dashboard Quotas](assets/images/extract/media/170325004.png)
 
 ### Allarmi sull’utilizzo delle Quotas
 
-Per permettere all’utente di ricevere notifiche quando vengono superate le soglie di utilizzo delle quote, è stato incluso un modulo “Alerting”. Per accedervi, è necessario selezionare la tab in alto della funzionalità Monitoring.
+Il modulo “Alerting” invia una notifica quando vengono superate le soglie di utilizzo delle quote. La pagina elenca le regole configurate nel sistema con la schedulazione, il tipo di alert, la modalità di invio, la data di creazione, la data dell’ultimo invio, lo stato della regola (“Enabled” o “Disabled”) e l’esito dell’ultima esecuzione (“In progress”, “Succeeded” o “Failed”).
 
 ![Accesso al sistema di Alerting](assets/images/extract/media/090425002.png)
 
-All’interno della pagina troviamo l’elenco degli “alert” configurati sul sistema, insieme alle rispettive configurazioni.
-
 #### Creazione di un nuovo Alert
 
-Utilizzando il menu disponibile a destra, è possibile aggiungere un nuovo alert al sistema.
-Per farlo, selezioniamo l’opzione “Nuovo alert” visualizzata e si aprirà una pagina di configurazione.
+Il pulsante “New rule”, in alto a destra, apre la pagina di configurazione, organizzata in tre riquadri.
 
 ![Creazione nuovo Alert](assets/images/extract/media/090425004.png)
 
-Nella pagina di configurazione, tutti i campi devono essere compilati, in particolare:
+Nel riquadro “Alert configuration”:
 
-- **“Tipo di alert”**: Selezionare la tipologia di alert
-- **“Schedulazione alert”**: Indica la frequenza dei controlli da effettuare
-- **“Tipo di quota”**: Selezionare la quota da monitorare
-- **“Soglia (%)”**: Inserire la percentuale oltre la quale verrà inviato l’alert
-- **“Sottosistemi”**: Selezionare uno o più sottosistemi da monitorare
-- **“Tipo invio alert”**: Selezionare la modalità di ricezione dell’alert, via e-mail o Rabbit queue (per integrazione automatica con altri sistemi)
-- **“Formato alert”**: Selezionare il formato del file inviato che definisce i dettagli dell’alert
-- **“Email”**: Se si seleziona E-mail come modalità di notifica, è possibile inserire un indirizzo email a cui inviare i report. Dopo aver inserito un’email, è necessario premere “Invio” sulla tastiera per confermare l’inserimento. Una volta premuto, l’email appena inserita si sposterà nel box in basso e il campo verrà svuotato per permettere l’inserimento di un nuovo indirizzo, se necessario.
+- **“Rule active”**: attiva o disattiva la regola
+- **“Alert Type”**: selezionare la tipologia di alert
+- **“Quota Type”**: selezionare la quota da monitorare, tra CPU, memoria, storage e backup
+- **“Threshold (%)”**: inserire la percentuale oltre la quale verrà inviato l’alert
+- **“Subsystems”** e **“Backup Systems”**: selezionare i sistemi da monitorare; va indicato almeno uno dei due
+
+Nel riquadro “Schedule configuration” si indicano la frequenza dei controlli, la data e l’ora della prima esecuzione e, se non si seleziona “Do not set end schedule date”, la data e l’ora di fine.
+
+Nel riquadro “Delivery configuration”:
+
+- **“Alert Send Type”**: selezionare la modalità di ricezione dell’alert, via e-mail oppure RabbitMQ (per l’integrazione automatica con altri sistemi)
+- **“Alert Format”**: selezionare il formato del file che riporta i dettagli dell’alert. Il campo si abilita dopo aver scelto il tipo di invio: “JSON” è sempre disponibile, “CSV” solo con invio via e-mail
+- **“Emails”**: presente solo con invio via e-mail. Dopo aver inserito un indirizzo è necessario premere “Invio” sulla tastiera per confermarlo: l’indirizzo passa nel box sottostante e il campo viene svuotato per permettere l’inserimento di un nuovo indirizzo, se necessario.
 
 ![Pagina di configurazione](assets/images/extract/media/090425005.png)
 
 #### Visualizzazione, modifica e cancellazione di un Alert
 
-In questa pagina troviamo l’elenco e le relative informazioni degli alert presenti nel sistema. Per ogni risultato, cliccando sul pulsante “tre puntini” a destra, sarà possibile effettuare tre operazioni:
+Per ogni regola, il pulsante “tre puntini” a destra mette a disposizione le seguenti operazioni:
 
-- Visualizzare la configurazione dell’alert
-- Modificare le impostazioni dell’alert
-- Eliminare la schedulazione per interrompere l’invio delle email
+- “Show rule” per visualizzare la configurazione della regola
+- “Edit rule” per modificarne le impostazioni
+- “Delete rule” per eliminarla e interrompere l’invio delle notifiche
+- “Enable rule” e “Disable rule” per sospendere o riattivare i controlli senza eliminare la regola
+- “Schedule Now” per eseguire subito un controllo
+- “Schedule history” per consultare lo storico delle esecuzioni
 
 ![Operazioni sugli alert](assets/images/extract/media/090425003.png)
 
-### Strumenti di Reportistica
+### Strumenti di reportistica
 
-La funzionalità di reportistica, specifica per ogni funzionalità, consente di generare report globali delle informazioni disponibili per i vari provider. All’interno delle pagine sarà anche possibile creare file per facilitare la condivisione delle informazioni.
-Per accedere alla funzionalità, sopra il breadcrumb, cliccare sulla tab “Reports”.
+La funzionalità di reportistica, specifica per funzionalità, consente di generare report globali delle informazioni disponibili per i vari provider; all’interno delle pagine è anche possibile creare dei file per facilitare la condivisione delle informazioni.
 
-![Accesso alla reportistica Catalog](assets/images/extract/media/image141.png)
+Per accedere alla funzionalità, selezionare la voce “Reports” del menu di Monitoring.
+
+![Accesso alla reportistica](assets/images/extract/media/MR001.png)
 
 #### Tipologie di report disponibili
 
@@ -103,63 +87,64 @@ Per accedere alla funzionalità, sopra il breadcrumb, cliccare sulla tab “Repo
 
 #### Creazione di un report
 
-In alto a destra della pagina, è possibile cliccare sul pulsante “Nuovo Report” per avviare la creazione di un report. In particolare, viene visualizzata una modale contenente l’elenco delle tipologie di report disponibili.
+In alto a destra della pagina, il pulsante “New report” avvia la creazione di un report: viene visualizzata una modale con l’elenco delle tipologie disponibili.
 
-![Creazione nuovo Report](assets/images/extract/media/image142.png)
+![Creazione nuovo Report](assets/images/extract/media/MR002.png)
 
-Una volta selezionata la tipologia di report, cliccare su “Configura” per selezionare i provider da includere nel report. Nella nuova finestra troviamo il campo “Provider” che consente di selezionare uno o più provider già presenti nel sistema. Successivamente, è possibile selezionare uno o più sottosistemi da includere nel report; se non si selezionano provider, non sarà possibile selezionare sottosistemi. Infine, è presente una sezione “tag” per includere solo le risorse che hanno il tag inserito.
+Una volta selezionata la tipologia, cliccare su “Configure” per impostare i filtri del report. I campi richiesti nella sezione “Report data” dipendono dalla tipologia: per il Monitoring Threshold Quotas sono il provider, il sottosistema, il sistema di backup e la soglia di utilizzo. Se la tipologia prevede un intervallo di date, il campo “Date range” compare nella stessa sezione per i soli report one-shot.
 
-![Configurazione report](assets/images/extract/media/image143.png)
+![Configurazione report](assets/images/extract/media/MR003.png)
 
-A questo punto, l’utente può scegliere tra due azioni diverse:
+A questo punto l’utente può scegliere tra due azioni diverse:
 
-- Creare un report statico che verrà salvato nel sistema
-- Pianificare un job che generi il report periodicamente
+- creare un report statico che verrà salvato nel sistema;
+- pianificare una schedulazione che generi il report periodicamente.
 
-Per confermare la creazione di un report statico, verificare che sia selezionato “One-Shot” per il campo “Tipo report” e cliccare sul pulsante “Submit” in basso.
-Dopo un periodo di caricamento, il nuovo report generato sarà visibile nell’elenco.
+Per confermare la creazione di un report statico, verificare che per il campo “Report Type” sia selezionato “One-Shot” e cliccare sul pulsante “Submit” in basso. Dopo un periodo di caricamento il report generato sarà visibile nell’elenco del tab “Ready”.
 
-![Elenco report generati](assets/images/extract/media/image144.png)
+![Elenco report generati](assets/images/extract/media/MR004.png)
 
 ##### Pianificazione report
 
-Se invece si desidera l’esecuzione automatica del report, sarà necessario selezionare “Ricorrente” per il campo “Tipo report”. In questo caso, la finestra si aggiorna mostrando parametri aggiuntivi per la configurazione del report periodico.
+Se invece si desidera l’esecuzione automatica del report, selezionare “Recurring” per il campo “Report Type”: la finestra si aggiorna mostrando i parametri aggiuntivi del report periodico.
+
 I parametri da inserire sono:
 
-- Periodo: consente di selezionare la frequenza di invio del report (oraria, giornaliera, ...)
-- “Ricevi solo se non vuoto”: se selezionato, il file non verrà inviato quando non contiene informazioni
-- Lingua report: consente di selezionare la lingua utilizzata nel report
-- Formato file: consente di selezionare uno o più tipi di file da includere nell’email
-- Email utente: consente di inserire un indirizzo email a cui inviare i report. Dopo aver inserito un’email, è necessario premere “Invio” sulla tastiera per confermare l’inserimento. Una volta premuto, l’email appena inserita si sposterà nel box in basso e il campo verrà svuotato per permettere l’inserimento di un nuovo indirizzo, se necessario.
+- “Period”: la frequenza di invio del report (oraria, giornaliera, ...); scegliendo “Custom” è possibile inserire direttamente un’espressione Cron, che viene validata dal sistema
+- data e ora della prima schedulazione, con la possibilità di inviare subito la prima occorrenza (“First schedule now”)
+- data e ora di fine schedulazione, oppure l’opzione “Do not set end schedule date” per non impostarla
+- “Receive only if not empty”: se selezionato, il file non verrà inviato quando non contiene informazioni
+- “Report's language”: la lingua utilizzata nel report
+- “File format”: uno o più formati di file da includere nella mail
+- “User E-mails”: gli indirizzi a cui inviare i report. Dopo aver inserito un indirizzo è necessario premere “Invio” sulla tastiera per confermarlo: l’indirizzo passa nel box sottostante e il campo viene svuotato per permettere l’inserimento di un nuovo indirizzo, se necessario
 
-![Parametri report pianificato](assets/images/extract/media/image145.png)
+![Parametri report pianificato](assets/images/extract/media/MR005.png)
 
-Configurati tutti i parametri, il pulsante “Submit” diventerà cliccabile. Cliccarlo per confermare l’inserimento e, dopo un periodo di caricamento, il nuovo report generato sarà visibile nell’elenco.
-
-![Elenco report generati](assets/images/extract/media/image144.png)
+Configurati tutti i parametri, il pulsante “Submit” diventa cliccabile: cliccarlo per confermare l’inserimento e, dopo un periodo di caricamento, la schedulazione sarà visibile nell’elenco.
 
 ##### Elenco report pianificati
 
-Per visualizzare l’elenco dei report pianificati, selezionare la tab “Scheduled” in alto a sinistra nella pagina dei report.
+Per visualizzare l’elenco dei report pianificati, selezionare il tab “Scheduled” in alto nella pagina dei report.
 
-![Elenco report pianificati](assets/images/extract/media/image146.png)
+![Elenco report pianificati](assets/images/extract/media/MR006.png)
 
-In questa pagina troviamo l’elenco e le relative informazioni dei report pianificati presenti nel sistema. Per ogni risultato, cliccando sul pulsante “tre puntini” a destra, sarà possibile effettuare tre operazioni:
+In questa pagina troviamo l’elenco e le relative informazioni dei report pianificati presenti nel sistema. Per ogni risultato, cliccando sul pulsante “tre puntini” a destra, sarà possibile:
 
-- Visualizzare l’ultimo report generato
-- Modificare le impostazioni della schedulazione (non sarà possibile modificare provider o sottosistemi selezionati)
-- Eliminare la schedulazione per interrompere l’invio delle email
+- visualizzare l’ultimo report generato (“Show report”)
+- modificare le impostazioni della schedulazione (“Edit”), senza poter cambiare i provider o i sottosistemi selezionati
+- eliminare la schedulazione (“Remove”) per interrompere l’invio delle e-mail
+- sospendere o riattivare l’invio delle e-mail (“Disable schedule” ed “Enable schedule”)
 
-![Modifica schedulazione](assets/images/extract/media/image147.png)
+![Modifica schedulazione](assets/images/extract/media/MR007.png)
 
 ##### Utilizzo dei report
 
-Cliccando su una riga di report statico, o utilizzando il pulsante “Mostra report” disponibile per i report pianificati, sarà possibile visualizzare la pagina di dettaglio del report selezionato.
-All’interno del riepilogo report Inventory è presente una sezione “Stats” che include il numero di dischi, interfacce, reti e macchine virtuali appartenenti al provider selezionato.
-Sotto la sezione “Stats” sono presenti i filtri utilizzati dall’utente per generare il report.
-Sotto i filtri, è presente una tabella riepilogativa delle risorse appartenenti ai provider. A destra sono presenti due pulsanti: “PRINT” ed “EXPORT”.
-Cliccando su “PRINT” viene visualizzata una modale di anteprima di stampa. Per stampare il report, cliccare sul pulsante “Print” in basso a destra; a questo punto partirà la stampa del report.
-Cliccando su “EXPORT” è possibile esportare il report nei formati “.csv”, “.json” o “.pdf”.
-Per tornare alla tab “Results”, cliccare sul pulsante “CLOSE” in basso a destra, oppure sulla freccia verso sinistra in alto a sinistra, accanto al titolo del report.
+Cliccando sulla riga di un report statico, o utilizzando il pulsante “Show report” disponibile per i report pianificati, si apre la pagina di dettaglio del report selezionato.
+
+In alto sono riportati i filtri utilizzati per generare il report e l’intervallo di date dei dati; a destra sono presenti i pulsanti “PRINT” ed “EXPORT”. Sotto è presente la tabella riassuntiva, paginata; se il report contiene troppe righe per essere visualizzato interamente a schermo, un avviso invita a scaricare il file per consultarlo per intero.
+
+Cliccando su “PRINT” si apre la finestra di stampa del browser, con l’anteprima del report. Cliccando su “EXPORT” è possibile esportare il report in formato “.csv”, “.json” o “.pdf”.
+
+Per tornare alla lista dei report, cliccare sul pulsante “CLOSE” in basso a destra oppure sulla freccia verso sinistra in alto, accanto al titolo del report.
 
 ![Dettaglio report](assets/images/extract/media/image148.png)
