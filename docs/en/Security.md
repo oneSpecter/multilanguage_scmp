@@ -1,128 +1,143 @@
 # Security
 
-The Movincloud's security feature shows the vulnerabilities of inventory assets present on the Movincloud.
+The Movincloud security feature shows the security and compliance status of the inventory assets available on the platform.
 
-To access the “Security” feature, click the bento button in the top left. After doing so, the menu bar will appear, where you need to click on “Security”.
+To reach the “Security” feature, click the menu icon at the top left: the menu bar opens, where the “Security” entry must be selected. As shown in the figure:
 
-![Access to Security](assets/images/extract/media/image268.png)
+![Opening Security](assets/images/extract/media/image268.png)
 
-### General Dashboard
+The menu of the feature covers the general dashboard, the detail dashboards per resource type (virtual machines, storage, edge devices, network and security with their subtypes), the “Compliance” dashboard, the “Cloud SIEMs” dashboard, the “Key Vaults” dashboard, the “Cluster” dashboard with the cluster alerts and the “Confidential Computing” dashboard.
 
-At this point, the user is on the “Dashboard” tab page where the security data of resources for all configured providers are shown in an aggregated manner.
+### General dashboard
 
-At the top, there is a filter bar that allows filtering results by subsystem, status, and/or policy name.
+On entering the feature, the user lands on the “Dashboard” page, which shows the security data of the resources aggregated across all the configured providers.
 
-After that, the user notices the presence of the bar chart indicating the compliance status of resources assigned to policies, subdivided by subsystem.
+At the top is a filter bar that narrows the results by policy name (“Filter by policy name”), “Subsystem” and “Resources Status” (“Healthy”, “Unhealthy”, “Not Applicable”); the two buttons at the right of the bar run the search and clear the filters. The active filters are listed above the bar and can be removed one by one.
 
-By hovering the mouse over a section of the chart, we can see that the values displayed on the page are updated to show a preview of the detail.
+Below the filters, three cards summarise the results: the overall compliant state (“Healthy” or “Unhealthy”), the overall resource compliance as a percentage together with the number of healthy resources out of the total, and the number of unhealthy policies.
 
-It is possible to click on a section of the chart to automatically apply the “subsystem” and “status” filters to the page.
+Next comes the bar chart showing the compliance state of the resources assigned to the policies, broken down by subsystem. Hovering over a section of the chart updates the values in the cards with a preview of the detail; clicking a section of the chart automatically applies the “Subsystem” and “Resources Status” filters to the page.
 
-![Security Dashboard](assets/images/extract/media/image269.png)
+![Security dashboard](assets/images/extract/media/image269.png)
 
-Scrolling down the page, there is the policies table which will be automatically filtered based on the selected filters.
+Under the chart is the policies table, automatically filtered according to the selected filters. For each policy it reports the name, the severity, the subsystem, the user impact, the risks, the compliance state and the number of occurrences.
+
+Next to the table, a doughnut chart reports the distribution of the resources by state: the legend entries show the amount and the percentage of each state and, when clicked, filter the page on that state. The chart button at the top right of the table shows or hides the chart column, to give the table more room.
 
 ![Policies table](assets/images/extract/media/image270.png)
 
-Clicking on a row in the table will open a detail window where you can find all information related to the selected policy, and the list of affected resources will also be available. It is possible to click on the name of a machine to view its details; in this case, the user will be redirected to the Movincloud inventory resource in “view” mode.
+Clicking a row of the table opens a detail window with all the information about the selected policy. The lower part of the window lists the resources involved, with the “Show resources which status is:” selector to narrow the list to a single state. Next to each resource a “link” button is available: once clicked, the user is redirected to the Movincloud inventory resource in “view” mode.
 
-![Policy details](assets/images/extract/media/image271.png)
+![Policy detail](assets/images/extract/media/image271.png)
 
-To exit the detail, you need to click outside the window, which will close automatically.
+To leave the detail, click the “X” at the top right of the window or press “Esc”.
 
-### Dashboards specific to resource type
+### Resource-type dashboards
 
-It is possible to further filter policies by resource type, using the tabs at the top of the page.
+The policies can be narrowed further by resource type, using the tabs at the top of the page.
 
-Once the resource type is selected, it is possible to navigate the pages following the methods described in the previous paragraph.
+Once the resource type is selected, the pages are navigated as described in the previous paragraph.
 
-![Virtual Machines compliance Dashboard](assets/images/extract/media/image272.png)
+![Virtual Machine compliance dashboard](assets/images/extract/media/image272.png)
 
-### SIEM Dashboard
+### SIEM dashboard
 
-To view the SIEM dashboard, click on the tab that depicts a shield. At the top, there is a dropdown menu where you can select the subscription of interest, while next to it is a dropdown menu where you can select a time range.
+To view the SIEM dashboard, select the “Cloud SIEMs” entry of the menu. At the top is the filter bar, where the SIEMs of interest and the time range (“1 Day” or “30 Days”) can be selected; the two buttons at the right run the search and clear the filters. The button at the top right of the page offers the “Refresh Analytics” entry, which forces the statistics to be recomputed and reports the outcome with a message.
 
-Below, there is the “Summary” section which contains information, including for example “Alerts” which indicates the number of alerts. Also within the “Summary” section is the “”Incidents by status” chart which indicates incidents by status.
+Below is the “Summary” section, containing the number of alerts, the number of high severity incidents, the total number of incidents with the share of new ones, and the number of total events; the “Summary” section also contains the “Incidents by status” chart, shown when there are incidents; the “Alerts by severity” and “Incidents by severity” charts follow, and can be clicked to filter the page.
 
-Below the “Summary” section, there is the “Hourly Events Grouped By Type” section which contains a histogram chart indicating hourly events by type.
+Under the “Summary” section, the “Stats” sections report the analytics returned by the SIEM.
 
-![SIEM Dashboard](assets/images/extract/media/image273.png)
+![SIEM dashboard](assets/images/extract/media/image273.png)
 
-Scrolling through the SIEM dashboard, there is the “Event types” chart which indicates all event types.
+Scrolling the SIEM dashboard, the charts report the event types detected over the period.
 
 ![“Event types" of the SIEM dashboard](assets/images/extract/media/image274.png)
 
-Finally, at the bottom of the page, there are two tables: on the left, the “Alert rules” table which shows a set of alarm rules, while on the right, there is the “Incidents” table which shows incidents.
+Finally, at the bottom of the page, there are two tables: on the left the “Alert rules” table, which shows a set of alarm rules, and on the right the “Incidents” table, which shows the incidents.
 
 ![“Alert rules” and “Incidents” tables](assets/images/extract/media/image275.png)
 
-Clicking on a row in the table will open a detail window, where you can find all information related to the selected rule or incident.
+Clicking a row of the table opens a detail window with all the information about the selected rule or incident.
 
-![“Incidents” details](assets/images/extract/media/image276.png)
+![“Incidents” detail](assets/images/extract/media/image276.png)
 
-### Secret Manager Dashboard
+### Key Vaults dashboard
 
-To view the SIEM dashboard, click on the tab that depicts a key. At the top, there is a dropdown menu where you can select the subscription of interest.
+To view the Key Vaults dashboard, select the “Key Vaults” entry of the menu. At the top is the filter bar, where the vault of interest can be selected; the button at the top right of the page offers the “Refresh Analytics” entry.
 
-![Key Vault Dashboard](assets/images/extract/media/image277.png)
+Under the filters, the collapsible “Summary” panel reports the chart with the totals of the resources held in the selected vault.
 
-At the bottom of the page, you can see navigation buttons for the table and a table.
+![Key Vault dashboard](assets/images/extract/media/image277.png)
 
-Depending on the selected page, the table will display respectively:
+Further down, the resources of the vault are organised in tabs:
 
-- Secret
-- Keys
-- Certificates
+- “Secrets”
+- “Keys”
+- “Certificates”
+- “Disk Encryption Sets”, shown only when the vault holds some
 
-![Viewable resources](assets/images/extract/media/image278.png)
+![Available resources](assets/images/extract/media/image278.png)
 
-Clicking on a row in the table allows you to view the detail of the selected resource.
+Clicking a row of the table shows the detail of the selected resource.
 
-![Key details](assets/images/extract/media/image279.png)
+![Key detail](assets/images/extract/media/image279.png)
 
-### Clusters Dashboard
+### Clusters dashboard
 
-At this point, the user is on the “Dashboard” tab page where all alerts generated by the configured “Cluster” type subsystems in Movincloud are shown in an aggregated manner.
+The “Cluster” entry of the menu shows, in aggregated form, all the alerts raised by the “Cluster” subsystems configured in Movincloud.
 
-At the top, there is a filter bar that allows filtering results by namespace, subscription, and/or policy name.
+At the top is a filter bar that narrows the results by name (“Filter results”), “Subsystem” and “Namespace”; the two buttons at the right of the bar run the search and clear the filters.
 
-After that, the user notices the presence of the bar chart indicating the total number of “alerts” received, subdivided by subsystem.
+Below the filters, three summary cards report the share of “Info”, “Warning” and “Critical” alerts, each with its count out of the total.
 
-By hovering the mouse over a section of the chart, we can see that the values displayed on the page are updated to show a preview of the detail.
+Next, the user sees the bar chart reporting the total number of alerts received, broken down by subsystem. Hovering over a section of the chart updates the values shown in the page with a preview of the detail. A section of the chart can be clicked to apply the “Subsystem” filter automatically.
 
-It is possible to click on a section of the chart to automatically apply the “subsystem” filter.
+![“Cluster alerts” dashboard](assets/images/extract/media/image280.png)
 
-![“Cluster alerts” Dashboard](assets/images/extract/media/image280.png)
-
-Scrolling down the page, there is the “alerts” table which will be automatically filtered based on the selected filters.
+Scrolling the page down, there is the “alerts” table, automatically filtered according to the selected filters.
 
 ![Alerts table](assets/images/extract/media/image281.png)
 
-Clicking on a row in the table will open a detail window, where you can find all information related to the selected “alert”.
+Clicking a row of the table opens a detail window with all the information about the selected alert.
 
-![Alert details on clusters](assets/images/extract/media/image271.png)
+To leave the detail, click the “X” at the top right of the window or press “Esc”.
 
-To exit the detail, you need to click outside the window, which will close automatically.
+### Compliance dashboard
 
-### Compliance Dashboard
-
-To view the compliance dashboard, click on the tab that depicts a document in the security module.
+To view the compliance dashboard, select the “Compliance” entry of the menu.
 
 ![Compliance dashboard](assets/images/extract/media/120325001.png)
 
-At this point, the user is on the "Compliance" tab page, composed of 4 sections.
-The first section contains filters that allow searching by policy name, subsystem, and/or compliance status.
-The second section, always active, contains pie charts that indicate the general status of the filtered resources.
+The page is made of 4 sections.
+The first section holds the filters, which allow searching by policy name, subsystem and/or compliance status.
+The second section, always active, holds the summary cards with the doughnut charts reporting the overall state of the filtered resources and policies, the overall compliance as a percentage and the number of unhealthy policies.
 
 ![“Filters” and “pie charts” sections](assets/images/extract/media/120325002.png)
 
-The third section, active only if multiple different subsystems are present in the results, shows a bar chart, subdivided by provider, of the compliance status of resources.
-The last section contains a table with general information on policy groups.
+The third section, active only when the results span more than one subsystem, shows a bar chart of the compliance state of the resources, broken down by provider; here too hovering updates the cards and clicking applies the subsystem filter.
+The last section holds a table with the general information about the policy groups: the name, with the icon that tells a policy set from a single policy, the compliance status and, for resources and policies, the percentage of non-compliant ones with the related count.
 
 ![“Bar charts” and “table” sections](assets/images/extract/media/120325003.png)
 
-Clicking on a row in the table opens a modal where it will be possible to view the list of all policies configured in the group, with the relative resource count.
-Still within the modal, we can click on one of the displayed policies; doing so will show at the bottom the list of all machines assigned to the policy and their respective status.
-Next to each resource, a "link" button is available; once clicked, the user will be redirected to the inventory page of the selected resource.
+Clicking a row of the table opens a modal where the list of all the policies configured in the group can be seen, with the related resource count; the fields at the top of the modal filter the list by name and by compliance status.
+Still inside the modal, one of the listed policies can be clicked; doing so shows, at the bottom, the list of all the machines assigned to the policy and their state.
+Next to each resource a “link” button is available; once clicked, the user is redirected to the inventory page of the selected resource.
 
-![Policy details](assets/images/extract/media/120325004.png)
+![Policy detail](assets/images/extract/media/120325004.png)
+
+### Confidential Computing dashboard
+
+To view the confidential computing dashboard, select the “Confidential Computing” entry of the menu. The page lists the instances known to the configured remote attestation servers, together with the state of their memory encryption (SEV).
+
+![Confidential Computing dashboard](assets/images/extract/media/SE001.png)
+
+At the top is the filter bar, where the remote attestation of interest can be selected; the two buttons at the right run the search and clear the filters.
+
+Below the filters, the table reports for each instance its remote attestation, the host name, the KH backend type and the “Security Encryption Verification” state: a closed green padlock means SEV is active, an open red padlock means SEV is not active and a question mark means the state is unknown.
+
+Clicking a row of the table opens a detail window with the general and technical information of the instance (UUID, remote attestation, host name, KH backend type, SEV state, SEV proof, OS version, estimated boot time and boot time), the “Backup Locations”, the last unlock log and the last SEV log.
+
+![Confidential Computing detail](assets/images/extract/media/SE002.png)
+
+To leave the detail, click the “X” at the top right of the window or press “Esc”.
