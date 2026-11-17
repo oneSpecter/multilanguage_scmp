@@ -42,6 +42,9 @@ Una volta selezionata la tipologia di risorsa, è possibile navigare le pagine s
 
 ### Dashboard SIEM
 
+!!! info "Nota"
+    Le immagini di questa sezione non sono state aggiornate: alla data di questa revisione non è disponibile un ambiente con SIEM e Key Vault configurati da cui acquisire nuovi screenshot.
+
 Per visualizzare la dashboard SIEM, selezionare la voce “Cloud SIEMs” del menu. In alto è presente la barra dei filtri, dove è possibile selezionare i SIEM di interesse e l’intervallo temporale (“1 Giorno” o “30 Giorni”); i due pulsanti a destra avviano la ricerca e azzerano i filtri. Il pulsante in alto a destra della pagina mette a disposizione la voce “Aggiorna Analytics”, che forza il ricalcolo delle statistiche e segnala con un messaggio l’esito dell’operazione.
 
 Sotto, è presente la sezione “Sommario” che contiene il numero di avvisi, il numero di incidents gravi, il totale degli incidents con l’indicazione di quanti sono nuovi e il numero di eventi totali; sempre all’interno della sezione “Sommario”, se sono presenti incidents, viene mostrato il grafico “Incidents per stato”; seguono i grafici “Alerts per severità” e “Incidents per severità”, cliccabili per filtrare la pagina.
@@ -63,6 +66,9 @@ Cliccando su una riga della tabella si aprirà una finestra di dettaglio, dove �
 ![Dettaglio “Incidents”](assets/images/extract/media/image276.png)
 
 ### Dashboard Key Vaults
+
+!!! info "Nota"
+    Le immagini di questa sezione non sono state aggiornate: alla data di questa revisione non è disponibile un ambiente con SIEM e Key Vault configurati da cui acquisire nuovi screenshot.
 
 Per visualizzare la dashboard dei Key Vault, selezionare la voce “Key Vaults” del menu. In alto è presente la barra dei filtri, dove è possibile selezionare il vault di interesse; il pulsante in alto a destra della pagina mette a disposizione la voce “Aggiorna Analytics”.
 

@@ -42,6 +42,9 @@ Once the resource type is selected, the pages are navigated as described in the 
 
 ### SIEM dashboard
 
+!!! info "Note"
+    The figures in this section have not been updated: as of this revision there is no environment with SIEM and Key Vault configured from which to take new screenshots.
+
 To view the SIEM dashboard, select the “Cloud SIEMs” entry of the menu. At the top is the filter bar, where the SIEMs of interest and the time range (“1 Day” or “30 Days”) can be selected; the two buttons at the right run the search and clear the filters. The button at the top right of the page offers the “Refresh Analytics” entry, which forces the statistics to be recomputed and reports the outcome with a message.
 
 Below is the “Summary” section, containing the number of alerts, the number of high severity incidents, the total number of incidents with the share of new ones, and the number of total events; the “Summary” section also contains the “Incidents by status” chart, shown when there are incidents; the “Alerts by severity” and “Incidents by severity” charts follow, and can be clicked to filter the page.
@@ -63,6 +66,9 @@ Clicking a row of the table opens a detail window with all the information about
 ![“Incidents” detail](assets/images/extract/media/image276.png)
 
 ### Key Vaults dashboard
+
+!!! info "Note"
+    The figures in this section have not been updated: as of this revision there is no environment with SIEM and Key Vault configured from which to take new screenshots.
 
 To view the Key Vaults dashboard, select the “Key Vaults” entry of the menu. At the top is the filter bar, where the vault of interest can be selected; the button at the top right of the page offers the “Refresh Analytics” entry.
 
