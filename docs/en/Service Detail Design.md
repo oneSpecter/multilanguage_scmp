@@ -1,57 +1,57 @@
 # Service Detail Design
 
-The Service Detail Design service is the solution implemented for managing requests, which must then be processed within our environment by an authorized user.
+The Service Detail Design service is the solution implemented to manage the requests that then have to be worked, inside our environment, by an authorised user.
 
-To access Service Detail Design, log in to Movincloud with the Service Manager user.
+To reach Service Detail Design, log in to Movincloud with the Service Manager user, then click the menu icon at the top left and select the “Service Detail Design” entry. As shown in the figure:
 
-After logging in, click the "Service Detail Design" module from the bento button.
+![Opening the Service Detail Design module](assets/images/extract/media/image339.png)
 
-![Access to Service Detail Design module](assets/images/extract/media/image339.png)
+The “Work Orders” page opens, where the work orders already created can be filtered. At the top is the filter bar:
 
-The search page will be shown where it is possible to filter already created work orders based on:
+- “Select Status…”, which allows more than one status to be selected at a time (“New”, “In progress”, “Idle”, “Rejected”, “Completed”); the “Select All” entry at the head of the list turns every status on or off at once;
+- “Select Customer…”;
+- “Select a Service Type…”;
+- the creation period (“Last 30 days”, “Last 90 days”, “Last year”, “Current year”, “Custom Date”);
+- the date range, which shows the dates of the selected period and can be edited only by selecting “Custom Date”.
 
-- Status
-- Customer
-- Service Type
-- Phase
-- Creation Date
+The table shows the general information of the Work Order.
 
-The table will show the general information of the Work Order.
+![Service Detail Design filters](assets/images/extract/media/image340.png)
 
-![Service Detail Design functionality filters](assets/images/extract/media/image340.png)
+Click a work order row, anywhere except the “Actions” column, to see its contents; the “Work Order Details” window opens, with the general information at the top and the other sections grouped into panels that expand when clicked. The “Referents” and “Parameters” panels appear only when the request holds them, while “Completion Result” appears only for completed orders.
 
-Click the center of a work order row to view its content; a modal will open where we can expand the various sections by clicking on them.
+To leave the detail, click the “X” at the top right of the window or press “Esc”.
 
-To exit the detail view, click outside the gray window.
+![Work Order detail](assets/images/extract/media/image341.png)
 
-![Work Order Details](assets/images/extract/media/image341.png)
+### Work Order flow
 
-### Work Order Flow
+To take a work order, click the “Resume order” button, the “Play” symbol next to an order in “New” or “Idle” status.
 
-To take charge of a work order, click the "Play" symbol next to an order in "New" status.
+A status change notification is shown and the current status of the Order becomes “In progress”; the buttons of that order change:
 
-A status change notification will be displayed on the screen, and the current status of the Order becomes "In progress"; the buttons of the corresponding order are modified:
+- clicking the “Pause order” button moves the order to “Idle” status;
+- clicking the “Mark as completed” button closes the Work Order; the button stays visible until the order is closed, but can be used only while the order is “In progress”.
 
-- by clicking the “Pause” button, the order will transition to “Idle” status;
-- by clicking the “Mark as completed” button, it is possible to close the Work Order;
-- by clicking the “Rejected” button, it is possible to report the cancellation of the Order;
+An order already taken can be worked only by the operator who holds it: to every other user, the buttons of that order appear disabled.
 
-![Work order management page for Service Detail Design](assets/images/extract/media/image342.png)
+![Service Detail Design work order management page](assets/images/extract/media/image342.png)
 
-When the “Mark as completed” button is clicked, a window is displayed on the screen where information to be attached to the order can be entered, specifically:
+When the “Mark as completed” button is clicked, the “Close Order” window is shown, where the information to attach to the order can be entered, namely:
 
-- the result of the processing;
-- a description of the chosen result;
-- a note for the operator.
+- the outcome of the work, which is required;
+- a description of the chosen outcome.
 
 ![Closing a Work order](assets/images/extract/media/image343.png)
 
-By scrolling down the page, we can find the parameters section where it is possible to enter different key/value combinations for the parameters used during processing.
+Scrolling the window down, there is the “Delivery Data” section.
 
-After entering the key and value, click the “Plus” button to confirm the entry; new empty fields are added where additional parameters can be entered. To delete a key/value pair, click the “Minus” button; once all parameters have been entered, click the “Finish” button.
+Further parameters can be entered as key/value pairs in the row at the bottom, then click the “Plus” button to confirm; to remove a pair that was added, click the “Minus” button.
 
-![Parameter entry](assets/images/extract/media/image344.png)
+Once every parameter is entered, click the “Finish” button: the order moves to “Completed” status.
 
-After completing the order, it is possible, by opening the respective menus, to view all the information entered during processing within the info section.
+![Entering parameters](assets/images/extract/media/image344.png)
 
-![Information added during processing](assets/images/extract/media/image345.png)
+Once the order is completed, the detail can be opened again to see the information entered during the work.
+
+![Information added during the work](assets/images/extract/media/image345.png)
